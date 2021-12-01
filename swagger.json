@@ -1,0 +1,82 @@
+{
+    "swagger": "2.0",
+    "info": {
+    "version": "1.0.0",
+        "title": "Produit API",
+        "description": "CRUD Produit Formation NodeJs && Angular",
+        "license": {
+        "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+    }
+},
+    "host": "localhost:8700",
+    "basePath": "/",
+    "tags": [
+    {
+        "name": "Produit",
+        "description": "API for Produits in the system",
+
+            "paths": {
+                "/users": {
+                    "get": {
+                        "tags": ["Users"],
+                        "summary": "Get all users in system",
+                        "responses": {
+                            "200": {
+                                "description": "OK",
+                                "schema": {
+                                    "$ref": "#/definitions/Users"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "definitions": {
+                "User": {
+                    "required": ["name", "_id", "companies"],
+                    "properties": {
+                        "_id": {
+                            "type": "integer",
+                            "uniqueItems": true
+                        },
+                        "isPublic": {
+                            "type": "boolean"
+                        },
+                        "name": {
+                            "type": "string"
+                        },
+                        "books": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "amount": {
+                                        "type": "number"
+                                    }
+                                }
+                            }
+                        },
+                        "companies": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "Users": {
+                    "type": "array",
+                    "$ref": "#/definitions/User"
+                }
+            }
+        }
+
+],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"]
+}
